@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage('Remote Command') {
       steps {
-        sshagent([credentialsId: 'slave-cred']) {
+        sshagent(['slave-cred'])  {
           sh 'ssh -i ~/.ssh/id_rsa slave2@65.1.92.138 "sudo su -"'
         }
       }
