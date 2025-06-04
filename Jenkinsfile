@@ -1,14 +1,24 @@
-pipeline {
-  agent any
 
-  stages {
-    stage('Remote Command') {
-      steps {
-        sshagent(['slave1-cred'])  {
-          sh 'ssh  -o StrictHostKeyChecking=no  slave1-cred@13.232.44.132 "sudo su -"'
-        }
-      }
-    }
-  }
+
+
+
+pipeline{
+      agent any 
+
+stages{
+
+           stage('Remote Access') {
+
+                      agent any
+
+
+                steps {
+                    sshagent(['slave-node-2']) {
+            sh 'ssh -o StrictHostKeyChecking=no ec2-user@3.108.65.248  sudo su -'
+                  }
+                }
+            }
+
 }
 
+}
